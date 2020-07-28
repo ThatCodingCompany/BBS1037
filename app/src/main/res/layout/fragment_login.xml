@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="tcc.bbshust.login.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,6 +33,7 @@
             android:layout_height="81dp"
             android:layout_marginTop="45dp"
             android:background="@drawable/shape_login_button"
+            android:onClick="@{()->viewModel.onLoginButtonClick()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_background"
@@ -40,6 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
+            android:onClick="@{()->viewModel.onLoginButtonClick()}"
             android:text="@string/button_login"
             android:textSize="26.12sp"
             app:layout_constraintBottom_toBottomOf="@+id/button_login"
@@ -61,7 +66,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/your_email" />
+                android:hint="@string/your_email"
+                android:text="@={viewModel.username}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -78,7 +84,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/passwd_pls" />
+                android:hint="@string/passwd_pls"
+                android:text="@={viewModel.password}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
