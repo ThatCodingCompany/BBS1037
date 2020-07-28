@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -8,7 +9,89 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#445A5C">
+
+        <ImageView
+            android:id="@+id/edit_background"
+            android:layout_width="338dp"
+            android:layout_height="322dp"
+            android:layout_marginTop="194dp"
+            android:background="@drawable/shape_text_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/shape_text_layout"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/button_login"
+            android:layout_width="338dp"
+            android:layout_height="81dp"
+            android:layout_marginTop="45dp"
+            android:background="@drawable/shape_login_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_background"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="@string/button_login"
+            android:textSize="26.12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/button_login"
+            app:layout_constraintEnd_toEndOf="@+id/button_login"
+            app:layout_constraintStart_toStartOf="@+id/button_login"
+            app:layout_constraintTop_toTopOf="@+id/button_login" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_textinput_account"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/text_view_email_hust"
+            app:layout_constraintStart_toStartOf="@+id/edit_background"
+            app:layout_constraintTop_toTopOf="@+id/edit_background">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/your_email" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_textinput_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="@+id/edit_background"
+            app:layout_constraintStart_toStartOf="@+id/edit_background"
+            app:layout_constraintTop_toBottomOf="@+id/layout_textinput_account">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/passwd_pls" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/text_view_email_hust"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:text="\@ hust.edu.cn"
+            android:textColor="@android:color/primary_text_light"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/layout_textinput_account"
+            app:layout_constraintEnd_toEndOf="@+id/edit_background"
+            app:layout_constraintTop_toTopOf="@+id/layout_textinput_account" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
