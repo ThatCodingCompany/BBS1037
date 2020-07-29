@@ -44,7 +44,7 @@ class LoginViewModel : ViewModel() {
 
                 //Log.d(TAG, "onLoginButtonClick: token: $token")
                 val allPostsResponseDeferred =
-                    NetworkApi.retrofitService.getAllPosts(makeToken(token))
+                    NetworkApi.retrofitService.getAllPostsAsync(makeToken(token))
 
                 var posts: List<Post>? = null
                 try {
@@ -56,7 +56,7 @@ class LoginViewModel : ViewModel() {
                 }
                 if (posts != null) {
                     val specificPostResponseDeferred =
-                        NetworkApi.retrofitService.getPostById(
+                        NetworkApi.retrofitService.getPostByIdAsync(
                             makeToken(token),
                             posts.get(0).postId
                         )
