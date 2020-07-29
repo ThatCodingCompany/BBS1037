@@ -26,7 +26,7 @@ private val retrofit = Retrofit.Builder()
 interface NetworkApiService {
 
     @GET("user/token")
-    fun getToken(
+    fun getTokenAsync(
         @Query("email") email: String,
         @Query("password") password: String
     ): Deferred<TokenResponse>
