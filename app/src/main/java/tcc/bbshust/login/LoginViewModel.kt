@@ -31,7 +31,7 @@ class LoginViewModel : ViewModel() {
 
                 try {
                     val tokenResult = tokenDeferred.await()
-                    Log.d(TAG, tokenResult.token.token)
+                    Log.d(TAG, tokenResult.data.token)
                 } catch (e: Exception) {
                     Log.d(TAG, "onLoginButtonClick: failure: ${e.message}")
                 }
