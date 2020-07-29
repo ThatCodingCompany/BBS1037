@@ -8,6 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
+import tcc.bbshust.network.response.TokenResponse
 
 private const val BASE_URL = "https://s1.996404.xyz:3443/api/v1/"
 

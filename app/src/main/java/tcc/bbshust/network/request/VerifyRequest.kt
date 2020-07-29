@@ -1,4 +1,4 @@
-package tcc.bbshust.network
+package tcc.bbshust.network.request
 
 import com.squareup.moshi.Json
 
