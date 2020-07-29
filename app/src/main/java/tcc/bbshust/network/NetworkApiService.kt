@@ -7,7 +7,9 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.*
+import tcc.bbshust.network.request.PostRequest
 import tcc.bbshust.network.request.RegisterRequest
+import tcc.bbshust.network.request.ReplyRequest
 import tcc.bbshust.network.request.VerifyRequest
 import tcc.bbshust.network.response.*
 
@@ -51,6 +53,19 @@ interface NetworkApiService {
         @Header("Authorization") authorization: String,
         @Path("id") postId: String
     ): Deferred<GetPostByIdResponse>
+
+    @POST("post")
+    fun newPost(
+        @Header("Authorization") authorization: String,
+        @Body request: PostRequest
+    ): Deferred<PostResponse>
+
+    @POST("post/{id}")
+    fun reply(
+        @Header("Authorization") authorization: String,
+        @Path("id") postId: String,
+        @Body request: ReplyRequest
+    ): Deferred<ReplyResponse>
 }
 
 object NetworkApi {
