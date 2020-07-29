@@ -34,34 +34,34 @@ interface NetworkApiService {
     ): Deferred<TokenResponse>
 
     @POST("user/info")
-    fun register(
+    fun registerAsync(
         @Body registerRequest: RegisterRequest
     ): Deferred<RegisterResponse>
 
     @POST("user/verify")
-    fun verify(
+    fun verifyAsync(
         @Body verifyRequest: VerifyRequest
     ): Deferred<VerifyResponse>
 
     @GET("post")
-    fun getAllPosts(
+    fun getAllPostsAsync(
         @Header("Authorization") authorization: String
     ): Deferred<GetAllPostsResponse>
 
     @GET("post/{id}")
-    fun getPostById(
+    fun getPostByIdAsync(
         @Header("Authorization") authorization: String,
         @Path("id") postId: String
     ): Deferred<GetPostByIdResponse>
 
     @POST("post")
-    fun newPost(
+    fun newPostAsync(
         @Header("Authorization") authorization: String,
         @Body request: PostRequest
     ): Deferred<PostResponse>
 
     @POST("post/{id}")
-    fun reply(
+    fun replyAsync(
         @Header("Authorization") authorization: String,
         @Path("id") postId: String,
         @Body request: ReplyRequest
