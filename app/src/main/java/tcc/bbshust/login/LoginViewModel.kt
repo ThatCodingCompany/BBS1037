@@ -8,6 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import tcc.bbshust.network.NetworkApi
+import tcc.bbshust.network.data.Post
 import tcc.bbshust.utils.makeToken
 
 private const val TAG = "LoginViewModel"
@@ -44,13 +45,30 @@ class LoginViewModel : ViewModel() {
                 //Log.d(TAG, "onLoginButtonClick: token: $token")
                 val allPostsResponseDeferred =
                     NetworkApi.retrofitService.getAllPosts(makeToken(token))
+
+                var posts: List<Post>? = null
                 try {
                     //Log.d(TAG, "onLoginButtonClick: token: $token")
-                    val posts = allPostsResponseDeferred.await().data.postsInfo
+                    posts = allPostsResponseDeferred.await().data.postsInfo
                     Log.d(TAG, "onLoginButtonClick: success: $posts")
                 } catch (e: Exception) {
                     Log.d(TAG, "onLoginButtonClick: failure: ${e.message}")
                 }
+                if (posts != null) {
+                    val specificPostResponseDeferred =
+                        NetworkApi.retrofitService.getPostById(
+                            makeToken(token),
+                            posts.get(0).postId
+                        )
+
+                    try {
+                        val post = specificPostResponseDeferred.await().data
+                        Log.d(TAG, "onLoginButtonClick: success: $post")
+                    } catch (e: Exception) {
+                        Log.d(TAG, "onLoginButtonClick: failure: ${e.message}")
+                    }
+                }
+
             }
         }
     }
