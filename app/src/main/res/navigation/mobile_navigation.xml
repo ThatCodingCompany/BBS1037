@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation.xml"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="tcc.bbshust.ui.home.HomeFragment"
+        android:label="@string/nav_home"
+        tools:layout="@layout/home_fragment" />
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="tcc.bbshust.ui.user.UserFragment"
+        android:label="@string/nav_mine"
+        tools:layout="@layout/user_fragment" />
+    <fragment
+        android:id="@+id/messageFragment"
+        android:name="tcc.bbshust.ui.message.MessageFragment"
+        android:label="@string/nav_message"
+        tools:layout="@layout/message_fragment" />
+</navigation>

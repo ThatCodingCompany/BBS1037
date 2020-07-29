@@ -7,4 +7,7 @@
     <string name="hint_setpassword">请设置密码</string>
     <string name="hint_verifypassword">请确认密码</string>
     <string name="hint_input_verifycode">请输入验证码</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_mine">Mine</string>
+    <string name="nav_message">Message</string>
 </resources>
