@@ -12,7 +12,7 @@
         android:title="@string/nav_message"/>
 
     <item
-        android:id="@+id/nav_uer"
+        android:id="@+id/nav_user"
         android:icon="@drawable/user"
         android:title="@string/nav_mine"/>
 
