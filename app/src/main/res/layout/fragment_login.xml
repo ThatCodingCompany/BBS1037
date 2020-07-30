@@ -67,7 +67,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/your_email"
-                android:text="@={viewModel.username}" />
+                android:text="@={viewModel.username}"
+                android:inputType="textVisiblePassword"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -85,7 +86,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/passwd_pls"
-                android:text="@={viewModel.password}" />
+                android:text="@={viewModel.password}"
+                android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView

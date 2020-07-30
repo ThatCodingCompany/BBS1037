@@ -1,6 +1,7 @@
 package tcc.bbshust.login
 
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -27,23 +28,21 @@ class LoginViewModel : ViewModel() {
     val username = MutableLiveData<String>()
     val password = MutableLiveData<String>()
 
-    var navigateState = MutableLiveData<Int>().apply {
-        value = 1
-    }
-    var bottomNavState = MutableLiveData<Int>().apply {
-        value = when (navigateState.value) {
-            0 -> 0 //visible
-            1 -> 8//gone
-            else -> 8
-        }
-    }
 
+    private val _bottomNavState = MutableLiveData<Int>()
+
+    val bottomNavState:LiveData<Int>
+        get() = _bottomNavState
 
     private val _navigateToHome = MutableLiveData<TokenResponse>()
 
     val navigateToHome: LiveData<TokenResponse>
         get() = _navigateToHome
 
+    init {
+        _bottomNavState.value=View.GONE
+        Log.d(TAG, "init:success ${bottomNavState.value}")
+    }
 //    fun onLoginButtonClick() {
 //        Log.d(TAG, "onLoginButtonClick: invoked")
 //        uiScope.launch {
@@ -97,7 +96,7 @@ class LoginViewModel : ViewModel() {
         uiScope.launch {
 
             val tokenDeferred = NetworkApi.retrofitService.getTokenAsync(
-                "${username.value}@hust.edu.cn",
+                "${username.value}@oi-wiki.org",
                 password.value!!
             )
 
@@ -112,6 +111,7 @@ class LoginViewModel : ViewModel() {
 
     fun navigateToHomeDone() {
         _navigateToHome.value = null
-        navigateState.value = 0
+        _bottomNavState.value = View.VISIBLE
+        Log.d(TAG, "navigateToHomeDone: ${bottomNavState.value}")
     }
 }

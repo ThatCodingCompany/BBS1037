@@ -13,14 +13,12 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import tcc.bbshust.MainActivity
 import tcc.bbshust.R
 import tcc.bbshust.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = LoginFragment()
-    }
 
     private lateinit var viewModel: LoginViewModel
     private lateinit var binding: FragmentLoginBinding
@@ -62,6 +60,10 @@ class LoginFragment : Fragment() {
             }
         })
 
+        viewModel.bottomNavState.observe(viewLifecycleOwner, Observer {
+            val father = activity as MainActivity
+            father.bottomViewStateChange(it)
+        })
         return binding.root
     }
 
