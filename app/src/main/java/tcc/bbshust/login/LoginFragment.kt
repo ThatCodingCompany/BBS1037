@@ -50,13 +50,15 @@ class LoginFragment : Fragment() {
         }
 
         viewModel.navigateToHome.observe(viewLifecycleOwner, Observer {
-            if(it.isSuccess){
-                this.findNavController()
-                    .navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment(it.data))
-                viewModel.navigateToHomeDone()
-            }
-            else{
-                Toast.makeText(context, "error:${it.hint}", Toast.LENGTH_LONG).show()
+            if(it!=null){
+                if(it.isSuccess){
+                    this.findNavController()
+                        .navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment(it.data))
+                    viewModel.navigateToHomeDone()
+                }
+                else{
+                    Toast.makeText(context, "error:${it.hint}", Toast.LENGTH_LONG).show()
+                }
             }
         })
 
