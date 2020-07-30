@@ -7,5 +7,5 @@ import tcc.bbshust.network.data.PostIdData
 data class PostResponse(
     @Json(name = "success") var isSuccess: Boolean,
     @Json(name = "hint") var hint: String,
-    @Json(name = "data") var data: PostIdData
+    @Json(name = "data") var data: PostIdData?
 )
