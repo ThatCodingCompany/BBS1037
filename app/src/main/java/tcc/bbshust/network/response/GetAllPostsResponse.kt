@@ -7,5 +7,5 @@ import tcc.bbshust.network.data.GetAllPostsData
 data class GetAllPostsResponse(
     @Json(name = "success") var isSuccess: Boolean,
     @Json(name = "hint") var hint: String,
-    @Json(name = "data") var data: GetAllPostsData
+    @Json(name = "data") var data: GetAllPostsData?
 )
