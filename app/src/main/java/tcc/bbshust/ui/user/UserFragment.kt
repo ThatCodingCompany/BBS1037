@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import tcc.bbshust.MainActivity
 import tcc.bbshust.R
 import tcc.bbshust.databinding.UserFragmentBinding
 import tcc.bbshust.ui.message.MessageViewModel
@@ -27,6 +29,11 @@ class UserFragment : Fragment() {
         binding.lifecycleOwner=this
         binding.viewModel=viewModel
 
+        binding.button.setOnClickListener{
+            this.findNavController().navigate(UserFragmentDirections.actionUserFragmentToLoginFragment())
+            val father = activity as MainActivity
+            father.bottomViewStateChange(View.VISIBLE)
+        }
         return binding.root
     }
 

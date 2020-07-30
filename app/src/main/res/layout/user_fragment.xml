@@ -16,11 +16,12 @@
         tools:context=".ui.user.UserFragment"
         android:background="#B2DFDB">
 
-        <TextView
+        <Button
+            android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.hint}"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="90dp"
+            android:text="Button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
