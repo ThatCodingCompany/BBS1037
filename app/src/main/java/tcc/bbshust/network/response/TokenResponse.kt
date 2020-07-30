@@ -8,5 +8,5 @@ import tcc.bbshust.network.data.TokenData
 data class TokenResponse(
     @Json(name = "success") var isSuccess: Boolean,
     @Json(name = "hint") var hint: String,
-    @Json(name = "data") var data: TokenData
+    @Json(name = "data") var data: TokenData?
 )

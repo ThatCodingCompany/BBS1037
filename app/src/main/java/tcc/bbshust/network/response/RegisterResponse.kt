@@ -7,5 +7,5 @@ import tcc.bbshust.network.data.RegisterData
 data class RegisterResponse(
     @Json(name = "success") var isSuccess: Boolean,
     @Json(name = "hint") var hint: String,
-    @Json(name = "data") var data: RegisterData
+    @Json(name = "data") var data: RegisterData?
 )
