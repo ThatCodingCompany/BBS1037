@@ -3,9 +3,13 @@ package tcc.bbshust
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import tcc.bbshust.databinding.ActivityMainBinding
+import tcc.bbshust.login.LoginFragment
+import tcc.bbshust.login.LoginViewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,5 +23,9 @@ class MainActivity : AppCompatActivity() {
         val navController=findNavController(R.id.navHostFragment)
 
         navView.setupWithNavController(navController)
+        val viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        viewModel.bottomNavState.observe(this, Observer {
+            navView.visibility=it
+        })
     }
 }

@@ -32,7 +32,13 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="tcc.bbshust.ui.home.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment" >
+
+        <argument
+            android:name="TokenData"
+            app:argType="tcc.bbshust.network.data.TokenData" />
+
+    </fragment>
     <fragment
         android:id="@+id/userFragment"
         android:name="tcc.bbshust.ui.user.UserFragment"
