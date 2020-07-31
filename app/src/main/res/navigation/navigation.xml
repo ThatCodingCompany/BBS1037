@@ -40,6 +40,14 @@
             android:name="TokenData"
             app:argType="tcc.bbshust.network.data.TokenData"
             app:nullable="true" />
+        <argument
+            android:name="email"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="password"
+            app:argType="string"
+            app:nullable="true" />
 
     </fragment>
     <fragment
