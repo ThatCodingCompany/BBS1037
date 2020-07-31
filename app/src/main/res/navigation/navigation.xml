@@ -38,7 +38,8 @@
 
         <argument
             android:name="TokenData"
-            app:argType="tcc.bbshust.network.data.TokenData" />
+            app:argType="tcc.bbshust.network.data.TokenData"
+            app:nullable="true" />
 
     </fragment>
     <fragment

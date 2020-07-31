@@ -22,8 +22,6 @@ private const val TAG = "LoginViewModel"
 
 class LoginViewModel : ViewModel() {
 
-    private var userId = ""
-    private var token = ""
     private var viewModelJob = Job()
 
     private val uiScope = CoroutineScope(viewModelJob + Dispatchers.Main)
@@ -52,7 +50,7 @@ class LoginViewModel : ViewModel() {
 
             try {
                 val res = NetworkApi.retrofitService.getTokenAsync(
-                    "${username.value}@oi-wiki.org",
+                    "${username.value}",
                     password.value!!
                 )
                 if (res.isSuccessful) {
@@ -60,7 +58,7 @@ class LoginViewModel : ViewModel() {
                 } else {
                     val jasonConverter = moshi.adapter<TokenResponse>(TokenResponse::class.java)
                     if (res.errorBody() != null) {
-                        val errorRes = jasonConverter.fromJson(res.errorBody()?.string())
+                        val errorRes = jasonConverter.fromJson(res.errorBody()!!.string())
                         _navigateToHome.value = errorRes
                     }
                     Log.d(TAG, "loginForToken: error")
