@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="tcc.bbshust.register.RegisterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,12 +20,12 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="194dp"
-            android:contentDescription="TODO"
             android:src="@drawable/shape_register_layout"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            tools:layout_editor_absoluteX="0dp" />
+            tools:layout_editor_absoluteX="0dp"
+            tools:ignore="ContentDescription" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/register_email"
@@ -34,7 +37,8 @@
             android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView" />
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            android:text="@={viewModel.email}"/>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/register_password"
@@ -44,6 +48,7 @@
             android:background="@drawable/shape_edit"
             android:hint="@string/hint_setpassword"
             android:inputType="textPassword"
+            android:text="@={viewModel.passWord}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageView" />
@@ -56,6 +61,7 @@
             android:background="@drawable/shape_edit"
             android:hint="@string/hint_verifypassword"
             android:inputType="textPassword"
+            android:text="@={viewModel.verifyPass}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/register_password" />
@@ -67,7 +73,8 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/shape_edit"
             android:hint="@string/hint_input_verifycode"
-            android:inputType="number"
+            android:inputType="textVisiblePassword"
+            android:text="@={viewModel.verifyCode}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/register_email">
@@ -85,27 +92,29 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageView" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layout_textinput_account"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="100dp"
-            app:layout_constraintStart_toStartOf="@+id/edit_background"
-            app:layout_constraintTop_toTopOf="@+id/edit_background">
-
-        </com.google.android.material.textfield.TextInputLayout>
-
         <Button
             android:id="@+id/register_button"
             android:layout_width="260dp"
             android:layout_height="60dp"
             android:layout_marginTop="420dp"
             android:background="@drawable/shape_register_button"
-            android:text="注册"
+            android:text="@string/register_botton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView" />
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            android:onClick="@{()->viewModel.onClickRegisterVerify()}"/>
+
+        <Button
+            android:id="@+id/get_code_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="@string/getVerifyCode"
+            app:layout_constraintEnd_toEndOf="@+id/register_verifycode"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/register_verifycode"
+            android:onClick="@{()->viewModel.onClickGetRegisterRes()}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

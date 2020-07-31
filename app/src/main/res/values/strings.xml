@@ -10,4 +10,8 @@
     <string name="nav_home">Home</string>
     <string name="nav_mine">Mine</string>
     <string name="nav_message">Message</string>
+    <string name="register_botton">注册</string>
+    <string name="getVerifyCode">获取验证码</string>
+    <string name="loginRegisterButton">注册</string>
+    <string name="hust_edu_cn">\@ hust.edu.cn</string>
 </resources>
