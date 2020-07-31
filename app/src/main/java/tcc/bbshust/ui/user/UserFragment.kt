@@ -31,8 +31,8 @@ class UserFragment : Fragment() {
 
         binding.button.setOnClickListener{
             this.findNavController().navigate(UserFragmentDirections.actionUserFragmentToLoginFragment())
-            val father = activity as MainActivity
-            father.bottomViewStateChange(View.VISIBLE)
+//            val father = activity as MainActivity
+//            father.bottomViewStateChange(View.VISIBLE)
         }
         return binding.root
     }
