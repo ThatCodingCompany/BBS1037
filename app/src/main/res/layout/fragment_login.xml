@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/your_email"
                 android:text="@={viewModel.username}"
-                android:inputType="textVisiblePassword"/>
+                android:inputType="textEmailAddress"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout

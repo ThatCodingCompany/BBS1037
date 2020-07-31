@@ -56,7 +56,13 @@ class LoginFragment : Fragment() {
             if (it != null) {
                 if (it.isSuccess) {
                     this.findNavController()
-                        .navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment(it.data!!))
+                        .navigate(
+                            LoginFragmentDirections.actionLoginFragmentToHomeFragment(
+                                it.data!!,
+                                viewModel.username.value,
+                                viewModel.password.value
+                            )
+                        )
                     viewModel.navigateToHomeDone()
                     Toast.makeText(context, "successfully login!", Toast.LENGTH_SHORT).show()
                 } else {
