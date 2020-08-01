@@ -21,34 +21,52 @@
             android:id="@+id/post_recyclerview"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="32dp"
             android:background="#F0F0F0"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_view_title" />
-
-        <ImageView
-            android:id="@+id/image_view_title"
-            android:layout_width="178dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/title_png"
-            tools:ignore="ContentDescription" />
+            app:layout_constraintTop_toBottomOf="@+id/home_title_2" />
 
         <ImageView
             android:id="@+id/image_view_new_post"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            app:layout_constraintBottom_toTopOf="@+id/post_recyclerview"
+            android:layout_marginStart="32dp"
+            app:layout_constraintBottom_toBottomOf="@+id/home_title_1"
+            app:layout_constraintStart_toEndOf="@+id/home_title_1"
+            app:layout_constraintTop_toTopOf="@+id/home_title_1"
+            app:srcCompat="@drawable/new_post_png"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/home_title_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/alef"
+            android:text="@string/no1037"
+            android:textColor="#FFD740"
+            android:textSize="32sp"
+            app:layout_constraintEnd_toStartOf="@+id/home_title_1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/home_title_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name_half"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/home_title_2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/new_post_png" />
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/home_title_2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
