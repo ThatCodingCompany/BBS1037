@@ -6,9 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import tcc.bbshust.R
 import tcc.bbshust.databinding.HomeFragmentBinding
 import tcc.bbshust.network.data.Post
@@ -26,27 +28,19 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.home_fragment, container, false)
+
+        val factory: HomeViewModelFactory = if (arguments == null) {
+            HomeViewModelFactory(null, null, null)
+        } else {
+            val args = HomeFragmentArgs.fromBundle(requireArguments())
+            HomeViewModelFactory(args.tokenData!!, args.email!!, args.password)
+        }
+
+        viewModel = ViewModelProvider(this, factory).get(HomeViewModel::class.java)
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-
-        var i = 1
-        val l = mutableListOf<Post>()
-        while (i <= 30) {
-            val tp = Post(
-                i.toString(),
-                System.currentTimeMillis(),
-                System.currentTimeMillis(),
-                "Title$i",
-                "Author$i",
-                "Content$i",
-                listOf<Post>()
-            )
-            l.add(tp)
-            i += 1
-        }
 
         postAdapter = PostAdapter(PostListener {
             Log.d(TAG, "onCreateView: item in RECYCLERVIEW clicked.")
@@ -54,14 +48,18 @@ class HomeFragment : Fragment() {
 
         binding.postRecyclerview.adapter = postAdapter
 
-        /*viewModel.postList.observe(viewLifecycleOwner, Observer { list ->
+        viewModel.postList.observe(viewLifecycleOwner, Observer { list ->
             postAdapter.submitList(list)
-        })*/
+        })
 
-        postAdapter.submitList(l)
+        viewModel.makeToast.observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+                Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+                viewModel.doneMakingToast()
+            }
+        })
 
         return binding.root
     }
-
 
 }
