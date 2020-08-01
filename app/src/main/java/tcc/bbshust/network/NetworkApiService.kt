@@ -12,7 +12,7 @@ import tcc.bbshust.network.request.ReplyRequest
 import tcc.bbshust.network.request.VerifyRequest
 import tcc.bbshust.network.response.*
 
-private const val BASE_URL = "http://s1.996404.xyz:3000/api/v1/"
+private const val BASE_URL = "https://s1.996404.xyz:3443/api/v1/"
 
 val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
