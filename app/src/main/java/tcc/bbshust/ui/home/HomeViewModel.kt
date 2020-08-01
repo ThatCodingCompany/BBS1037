@@ -1,8 +1,6 @@
 package tcc.bbshust.ui.home
 
-import android.app.Application
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -25,9 +23,14 @@ class HomeViewModel(
     private val uiScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     val postList: MutableLiveData<List<Post>> = MutableLiveData()
+
     private val _makeToast = MutableLiveData<String>()
     val makeToast: LiveData<String>
         get() = _makeToast
+
+    private val _navigateToLogin = MutableLiveData<Boolean>(false)
+    val navigateToLogin: LiveData<Boolean>
+        get() = _navigateToLogin
 
     init {
         fillPostList()
@@ -35,6 +38,7 @@ class HomeViewModel(
 
     private fun fillPostList() {
         if (token == null || email == null || password == null) {
+            _navigateToLogin.value = true
             return
         }
         uiScope.launch {
@@ -56,6 +60,13 @@ class HomeViewModel(
 
     fun doneMakingToast() {
         _makeToast.value = null
+    }
+
+    fun doneNavigating() {
+        _navigateToLogin.value = false
+    }
+
+    private fun reLogin() {
     }
 
     override fun onCleared() {

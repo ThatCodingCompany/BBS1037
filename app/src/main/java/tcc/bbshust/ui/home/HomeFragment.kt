@@ -52,6 +52,14 @@ class HomeFragment : Fragment() {
             postAdapter.submitList(list)
         })
 
+        viewModel.navigateToLogin.observe(viewLifecycleOwner, Observer { navigate ->
+            if (navigate) {
+                this.findNavController()
+                    .navigate(HomeFragmentDirections.actionHomeFragmentToLoginFragment())
+                viewModel.doneNavigating()
+            }
+        })
+
         viewModel.makeToast.observe(viewLifecycleOwner, Observer {
             if (it != null) {
                 Toast.makeText(context, it, Toast.LENGTH_LONG).show()
