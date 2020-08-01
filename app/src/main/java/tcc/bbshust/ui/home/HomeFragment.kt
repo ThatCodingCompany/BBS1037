@@ -15,9 +15,11 @@ import tcc.bbshust.R
 import tcc.bbshust.databinding.HomeFragmentBinding
 import tcc.bbshust.network.data.Post
 
-private const val TAG = "HomeFragment"
-
 class HomeFragment : Fragment() {
+
+    companion object {
+        private const val TAG = "HomeFragment"
+    }
 
     private lateinit var viewModel: HomeViewModel
     private lateinit var binding: HomeFragmentBinding

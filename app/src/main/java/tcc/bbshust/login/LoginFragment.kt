@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import tcc.bbshust.MainActivity
 import tcc.bbshust.R
+import tcc.bbshust.database.AccountDatabase
 import tcc.bbshust.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
@@ -29,8 +30,11 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val application = requireNotNull(this.activity).application
+        val dataSource = AccountDatabase.getInstance(application).accountDatabaseDao
+        val factory = LoginViewModelFactory(dataSource, application)
 
-        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        viewModel = ViewModelProvider(this, factory).get(LoginViewModel::class.java)
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
 
