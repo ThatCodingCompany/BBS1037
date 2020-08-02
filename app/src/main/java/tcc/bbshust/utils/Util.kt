@@ -9,8 +9,9 @@ fun makeToken(_token: String) = "Bearer $_token"
 
 @SuppressLint("SimpleDateFormat")
 fun Long.toTimeString(): String {
+    val thisMillis = this * 1000L
     return SimpleDateFormat("HH:mm")
-        .format(this).toString()
+        .format(thisMillis).toString()
 }
 
 @BindingAdapter("concise_content")
