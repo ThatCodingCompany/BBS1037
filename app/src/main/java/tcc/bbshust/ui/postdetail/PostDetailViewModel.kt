@@ -17,7 +17,7 @@ class PostDetailViewModel(
     private val postId: String
 ) : ViewModel() {
 
-    private val TAG="PostDetailViewModel"
+    private val TAG = "PostDetailViewModel"
 
     val replyList: MutableLiveData<List<Post>> = MutableLiveData()
 
@@ -33,14 +33,23 @@ class PostDetailViewModel(
         uiScope.launch {
             val res = NetworkApi.retrofitService.getPostByIdAsync(makeToken(token.token), postId)
             if (res.isSuccessful) {
-                replyList.value = res.body()!!.data!!.replyList
+                val header = Post(
+                    res.body()!!.data!!.postId,
+                    res.body()!!.data!!.createTime,
+                    res.body()!!.data!!.updateTime,
+                    res.body()!!.data!!.title,
+                    res.body()!!.data!!.author,
+                    res.body()!!.data!!.content,
+                    null
+                )
+                replyList.value = listOf(header)+res.body()!!.data!!.replyList!!
             } else {
                 val jsonConverter =
                     moshi.adapter<GetPostByIdResponse>(GetPostByIdResponse::class.java)
-                val errorBody=jsonConverter.fromJson(res.errorBody()!!.string())
+                val errorBody = jsonConverter.fromJson(res.errorBody()!!.string())
                 try {
                     Log.d(TAG, "getPostDetail: ${errorBody!!.hint}")
-                }catch (e:Exception){
+                } catch (e: Exception) {
                     Log.d(TAG, "getPostDetail: ${e.message}")
                 }
             }

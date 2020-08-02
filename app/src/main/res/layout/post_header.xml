@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="6dp"
             android:textSize="13sp"
+            app:set_text_time="@{post.updateTime}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textView5"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
@@ -38,6 +39,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textView3"
             app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:set_text_time="@{post.createTime}"
             tools:text="发表于：20/8/2 10:40"
             tools:textColor="#9E9E9E" />
 
@@ -49,6 +51,7 @@
             android:background="@drawable/shape_register_button"
             android:textColor="#F0F0F0"
             android:textSize="16sp"
+            android:text="@{post.author}"
             app:layout_constraintBottom_toBottomOf="@+id/post_title"
             app:layout_constraintStart_toEndOf="@+id/post_title"
             app:layout_constraintTop_toTopOf="@+id/post_title"
@@ -61,6 +64,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="14dp"
             android:textSize="14sp"
+            android:text="@{post.content}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/post_title"
             app:layout_constraintTop_toBottomOf="@+id/post_title"
@@ -76,6 +80,7 @@
             android:layout_marginTop="15dp"
             android:textColor="#9B724B"
             android:textSize="20sp"
+            android:text="@{post.title}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="今日饭堂" />

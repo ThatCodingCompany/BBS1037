@@ -17,11 +17,11 @@ private val ITEM_VIEW_TYPE_HEADER = 0
 private val ITEM_VIEW_TYPE_ITEM = 1
 
 class DetailAdapter(val postId: String) :
-    ListAdapter<DataItem, RecyclerView.ViewHolder>(DetailDiffCallback()) {
+    ListAdapter<Post, RecyclerView.ViewHolder>(DetailDiffCallback()) {
 
 
     override fun getItemViewType(position: Int): Int {
-        return when (getItem(position).id) {
+        return when (getItem(position).postId) {
 //            is DataItem.Header -> ITEM_VIEW_TYPE_HEADER
 //            is DataItem.ReplyItem -> ITEM_VIEW_TYPE_ITEM
             postId -> ITEM_VIEW_TYPE_HEADER
@@ -40,12 +40,12 @@ class DetailAdapter(val postId: String) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is ReplyViewHolder -> {
-                val item = getItem(position) as DataItem.ReplyItem
-                holder.bind(item.post)
+                val item = getItem(position)
+                holder.bind(item)
             }
             is DetailViewHolder -> {
-                val item = getItem(position) as DataItem.ReplyItem
-                holder.bind(item.post)
+                val item = getItem(position)
+                holder.bind(item)
             }
 
         }
@@ -66,7 +66,7 @@ class DetailAdapter(val postId: String) :
         }
     }
 
-    class DetailViewHolder(private val binding: PostHeaderBinding) :
+    class DetailViewHolder private constructor(private val binding: PostHeaderBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Post) {
             binding.post = item
@@ -84,21 +84,14 @@ class DetailAdapter(val postId: String) :
 }
 
 
-class DetailDiffCallback : DiffUtil.ItemCallback<DataItem>() {
-    override fun areItemsTheSame(oldItem: DataItem, newItem: DataItem): Boolean {
-        return oldItem.id == newItem.id
+class DetailDiffCallback : DiffUtil.ItemCallback<Post>() {
+    override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
+        return oldItem.postId == newItem.postId
     }
 
-    override fun areContentsTheSame(oldItem: DataItem, newItem: DataItem): Boolean {
+    override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean {
         return oldItem == newItem
     }
 
 }
 
-sealed class DataItem {
-    data class ReplyItem(val post: Post) : DataItem() {
-        override val id = post.postId
-    }
-
-    abstract val id: String
-}
