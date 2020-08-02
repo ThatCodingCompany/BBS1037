@@ -14,4 +14,6 @@
     <string name="getVerifyCode">获取验证码</string>
     <string name="loginRegisterButton">注册</string>
     <string name="hust_edu_cn">\@ hust.edu.cn</string>
+    <string name="no1037">1037</string>
+    <string name="name_half">号树洞</string>
 </resources>

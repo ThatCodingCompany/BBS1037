@@ -1,7 +1,9 @@
 package tcc.bbshust.login
 
+import android.app.Application
 import android.util.Log
 import android.view.View
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,6 +11,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import tcc.bbshust.database.AccountDatabaseDao
 import tcc.bbshust.network.NetworkApi
 import tcc.bbshust.network.data.Post
 import tcc.bbshust.network.data.TokenData
@@ -20,7 +23,10 @@ import kotlin.math.log
 
 private const val TAG = "LoginViewModel"
 
-class LoginViewModel : ViewModel() {
+class LoginViewModel(
+    private val database: AccountDatabaseDao,
+    application: Application
+) : AndroidViewModel(application) {
 
     private var viewModelJob = Job()
 
@@ -65,7 +71,7 @@ class LoginViewModel : ViewModel() {
                 }
 
             } catch (e: Exception) {
-                Log.d(TAG, "loginForToken: failure: ${e.message}")
+                Log.e(TAG, "loginForToken: failure: ${e.message}")
             }
 
 
