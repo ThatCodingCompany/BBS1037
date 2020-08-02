@@ -14,7 +14,6 @@ import androidx.navigation.fragment.findNavController
 import tcc.bbshust.R
 import tcc.bbshust.database.AccountDatabase
 import tcc.bbshust.databinding.HomeFragmentBinding
-import tcc.bbshust.network.data.Post
 
 class HomeFragment : Fragment() {
 
@@ -50,14 +49,22 @@ class HomeFragment : Fragment() {
         binding.postRecyclerview.adapter = postAdapter
 
         viewModel.postList.observe(viewLifecycleOwner, Observer { list ->
-            postAdapter.submitList(list)
+            postAdapter.submitList(list.sortedByDescending { post -> post.updateTime })
         })
 
         viewModel.navigateToLogin.observe(viewLifecycleOwner, Observer { navigate ->
             if (navigate) {
                 this.findNavController()
                     .navigate(HomeFragmentDirections.actionHomeFragmentToLoginFragment())
-                viewModel.doneNavigating()
+                viewModel.doneNavigatingToLogin()
+            }
+        })
+
+        viewModel.navigateToEditNewPost.observe(viewLifecycleOwner, Observer { mToken ->
+            if (mToken != null) {
+                this.findNavController()
+                    .navigate(HomeFragmentDirections.actionHomeFragmentToEditNewPostFragment(mToken))
+                viewModel.doneNavigatingToEditNewPost()
             }
         })
 

@@ -42,6 +42,10 @@ class HomeViewModel(
     val navigateToLogin: LiveData<Boolean>
         get() = _navigateToLogin
 
+    private val _navigateToEditNewPost = MutableLiveData<String>()
+    val navigateToEditNewPost: LiveData<String>
+        get() = _navigateToEditNewPost
+
     init {
         fillPostList()
     }
@@ -56,7 +60,9 @@ class HomeViewModel(
                     return@launch
                 }
             }
-            if (mToken == null || mToken.expireTime <= System.currentTimeMillis() + 1800000) {
+            if (mToken == null || mToken.expireTime * 1000 <= System.currentTimeMillis() + 3600000) {
+                Log.d(TAG, "fillPostList: Refreshing token.")
+                //即将过期（指一小时内过期，或已经过期）
                 reLogin()
             }
 
@@ -76,12 +82,27 @@ class HomeViewModel(
         }
     }
 
+    fun onNewButtonClicked() {
+        uiScope.launch {
+            val mToken = token
+            if (mToken == null || mToken.expireTime * 1000 <= System.currentTimeMillis() + 3600000) {
+                Log.d(TAG, "onNewButtonClicked: Refreshing token...")
+                reLogin()
+            }
+            _navigateToEditNewPost.value = token?.token!!
+        }
+    }
+
     fun doneMakingToast() {
         _makeToast.value = null
     }
 
-    fun doneNavigating() {
+    fun doneNavigatingToLogin() {
         _navigateToLogin.value = false
+    }
+
+    fun doneNavigatingToEditNewPost() {
+        _navigateToEditNewPost.value = null
     }
 
     private suspend fun reLogin() {
