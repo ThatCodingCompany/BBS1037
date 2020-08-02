@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import tcc.bbshust.R
+import tcc.bbshust.database.AccountDatabase
 import tcc.bbshust.databinding.HomeFragmentBinding
 import tcc.bbshust.network.data.Post
 
@@ -32,12 +33,10 @@ class HomeFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.home_fragment, container, false)
 
-        val factory: HomeViewModelFactory = if (arguments == null) {
-            HomeViewModelFactory(null, null, null)
-        } else {
-            val args = HomeFragmentArgs.fromBundle(requireArguments())
-            HomeViewModelFactory(args.tokenData!!, args.email!!, args.password)
-        }
+        val application = requireNotNull(this.activity).application
+        val dataSource = AccountDatabase.getInstance(application).accountDatabaseDao
+
+        val factory: HomeViewModelFactory = HomeViewModelFactory(dataSource, application)
 
         viewModel = ViewModelProvider(this, factory).get(HomeViewModel::class.java)
 
