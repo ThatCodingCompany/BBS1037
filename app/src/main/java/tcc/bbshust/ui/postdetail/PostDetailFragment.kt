@@ -32,7 +32,7 @@ class PostDetailFragment : Fragment() {
         val factory = PostDetailViewModelFactory(args.tokenData, args.postId)
         viewModel = ViewModelProvider(this, factory).get(PostDetailViewModel::class.java)
 
-        adapter = DetailAdapter()
+        adapter = DetailAdapter(args.postId)
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
