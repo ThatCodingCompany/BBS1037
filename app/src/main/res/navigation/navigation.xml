@@ -8,7 +8,7 @@
         android:id="@+id/loginFragment"
         android:name="tcc.bbshust.login.LoginFragment"
         android:label="LoginFragment"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
@@ -22,7 +22,7 @@
         android:id="@+id/registerFragment"
         android:name="tcc.bbshust.register.RegisterFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" >
+        tools:layout="@layout/fragment_register">
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
@@ -34,20 +34,9 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="tcc.bbshust.ui.home.HomeFragment"
-        android:label="HomeFragment" >
+        android:label="HomeFragment"
+        tools:layout="@layout/home_fragment">
 
-        <argument
-            android:name="TokenData"
-            app:argType="tcc.bbshust.network.data.TokenData"
-            app:nullable="true" />
-        <argument
-            android:name="email"
-            app:argType="string"
-            app:nullable="true" />
-        <argument
-            android:name="password"
-            app:argType="string"
-            app:nullable="true" />
         <action
             android:id="@+id/action_homeFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -58,7 +47,7 @@
     <fragment
         android:id="@+id/userFragment"
         android:name="tcc.bbshust.ui.user.UserFragment"
-        android:label="UserFragment" >
+        android:label="UserFragment">
         <action
             android:id="@+id/action_userFragment_to_loginFragment"
             app:destination="@id/loginFragment"

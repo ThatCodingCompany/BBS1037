@@ -7,10 +7,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import tcc.bbshust.database.Account
 import tcc.bbshust.database.AccountDatabaseDao
 import tcc.bbshust.network.NetworkApi
 import tcc.bbshust.network.data.Post
@@ -54,12 +52,21 @@ class LoginViewModel(
     fun loginForToken() {
         uiScope.launch {
 
+            //TODO: MODIFY HERE to restrict the type of email
+            val email = "${username.value}"
+
             try {
                 val res = NetworkApi.retrofitService.getTokenAsync(
-                    "${username.value}",
+                    email,
                     password.value!!
                 )
                 if (res.isSuccessful) {
+                    val account = Account(
+                        email = email,
+                        password = password.value!!,
+                        userId = res.body()!!.data!!.id
+                    )
+                    updateAccountToDatabase(account)
                     _navigateToHome.value = res.body()
                 } else {
                     val jasonConverter = moshi.adapter<TokenResponse>(TokenResponse::class.java)
@@ -78,6 +85,15 @@ class LoginViewModel(
         }
     }
 
+    private suspend fun updateAccountToDatabase(account: Account) {
+        withContext(Dispatchers.IO) {
+            //TODO: CHECK HERE
+            synchronized(this@LoginViewModel) {
+                database.clear()
+                database.insert(account)
+            }
+        }
+    }
 
     fun navigateToHomeDone() {
         _navigateToHome.value = null
