@@ -39,11 +39,11 @@
         android:layout_marginStart="20dp"
         android:background="@drawable/shape_register_button"
         android:textColor="#F0F0F0"
-        android:textSize="15sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/post_title"
         app:layout_constraintStart_toEndOf="@+id/post_title"
         app:layout_constraintTop_toTopOf="@+id/post_title"
-        tools:text="#8032183" />
+        tools:text="  0x000FFF3E  " />
 
     <TextView
         android:id="@+id/textView3"
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="14dp"
-        android:textSize="15sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/post_title"
         app:layout_constraintTop_toBottomOf="@+id/post_title"
@@ -64,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="15dp"
         android:textColor="#9B724B"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
