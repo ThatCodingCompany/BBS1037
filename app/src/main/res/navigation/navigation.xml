@@ -68,6 +68,9 @@
         <argument
             android:name="TokenData"
             app:argType="tcc.bbshust.network.data.TokenData" />
+        <argument
+            android:name="postId"
+            app:argType="string" />
 
     </fragment>
 </navigation>
