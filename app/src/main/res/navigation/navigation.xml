@@ -30,7 +30,8 @@
     <fragment
         android:id="@+id/messageFragment"
         android:name="tcc.bbshust.ui.message.MessageFragment"
-        android:label="MessageFragment" />
+        android:label="MessageFragment"
+        tools:layout="@layout/message_fragment"/>
     <fragment
         android:id="@+id/homeFragment"
         android:name="tcc.bbshust.ui.home.HomeFragment"
@@ -42,16 +43,34 @@
             app:destination="@id/loginFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_homeFragment_to_postDetailFragment"
+            app:destination="@id/postDetailFragment" />
 
     </fragment>
     <fragment
         android:id="@+id/userFragment"
         android:name="tcc.bbshust.ui.user.UserFragment"
-        android:label="UserFragment">
+        android:label="UserFragment"
+        tools:layout="@layout/user_fragment">
         <action
             android:id="@+id/action_userFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/postDetailFragment"
+        android:name="tcc.bbshust.ui.postdetail.PostDetailFragment"
+        android:label="PostDetailFragment"
+        tools:layout="@layout/post_detail_fragment">
+
+        <argument
+            android:name="TokenData"
+            app:argType="tcc.bbshust.network.data.TokenData" />
+        <argument
+            android:name="postId"
+            app:argType="string" />
+
     </fragment>
 </navigation>

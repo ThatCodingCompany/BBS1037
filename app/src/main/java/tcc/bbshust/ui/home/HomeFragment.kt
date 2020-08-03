@@ -43,7 +43,8 @@ class HomeFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        postAdapter = PostAdapter(PostListener {
+        postAdapter = PostAdapter(PostListener { postId ->
+            viewModel.onPostClicked(postId)
             Log.d(TAG, "onCreateView: item in RECYCLERVIEW clicked.")
         })
 
@@ -68,6 +69,18 @@ class HomeFragment : Fragment() {
             }
         })
 
+        viewModel.navigateToDetail.observe(viewLifecycleOwner, Observer { postId ->
+            if(postId!=null) {
+                Log.d(TAG, "onCreateView: ${postId}")
+                this.findNavController().navigate(
+                    HomeFragmentDirections.actionHomeFragmentToPostDetailFragment(
+                        viewModel.token!!,
+                        postId
+                    )
+                )
+                viewModel.doneNavigateToDetail()
+            }
+        })
         return binding.root
     }
 

@@ -26,6 +26,7 @@ class PostAdapter(private val clickListener: PostListener) :
         fun bind(item: Post, listener: PostListener) {
             binding.post = item
             binding.listener = listener
+            binding.executePendingBindings()
         }
 
         companion object {

@@ -26,7 +26,7 @@ class HomeViewModel(
         private const val TAG = "HomeViewModel"
     }
 
-    private var token: TokenData? = null
+    var token: TokenData? = null
     private var account: Account? = null
 
     private val viewModelJob = Job()
@@ -41,6 +41,10 @@ class HomeViewModel(
     private val _navigateToLogin = MutableLiveData<Boolean>(false)
     val navigateToLogin: LiveData<Boolean>
         get() = _navigateToLogin
+
+    private val _navigateToDetail = MutableLiveData<String>()
+    val navigateToDetail: LiveData<String>
+        get() = _navigateToDetail
 
     init {
         fillPostList()
@@ -109,5 +113,13 @@ class HomeViewModel(
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
+    }
+
+    fun onPostClicked(postId: String) {
+        _navigateToDetail.value = postId
+    }
+
+    fun doneNavigateToDetail() {
+        _navigateToDetail.value = null
     }
 }
