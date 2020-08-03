@@ -60,4 +60,10 @@ class PostDetailViewModel(
         super.onCleared()
         uiScope.cancel()
     }
+
+    fun addReply(content: String) {
+
+    }
+
+
 }

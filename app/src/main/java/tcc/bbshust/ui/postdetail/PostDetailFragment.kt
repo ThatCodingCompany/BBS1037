@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentResultListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import tcc.bbshust.R
@@ -17,6 +19,7 @@ class PostDetailFragment : Fragment() {
 
     companion object {
         fun newInstance() = PostDetailFragment()
+        val TAG="PostDetailFragment:"
     }
 
     private lateinit var viewModel: PostDetailViewModel
@@ -58,9 +61,19 @@ class PostDetailFragment : Fragment() {
 
         val replyFragment = ReplyFragment.newInstance()
 
+        childFragmentManager.setFragmentResultListener(
+            "requestKey",
+            viewLifecycleOwner,
+            FragmentResultListener{ key, bundle ->
+                val result = bundle.getString(key)
+                Toast.makeText(context, "$result", Toast.LENGTH_SHORT).show()
+            }
+        )
+
         binding.floatingReplyButton.setOnClickListener {
-            childFragmentManager.beginTransaction().add(R.id.fragmentForReply,replyFragment).commit()
-            it.visibility=View.GONE
+            childFragmentManager.beginTransaction().add(R.id.fragmentForReply, replyFragment)
+                .commit()
+            it.visibility = View.GONE
         }
         return binding.root
     }
