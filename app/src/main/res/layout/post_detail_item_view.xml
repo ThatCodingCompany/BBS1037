@@ -14,47 +14,69 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/reply_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="4dp"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/reply_content"
-            app:set_text_time="@{Post.updateTime}"
-            tools:text="发表于：20/8/2 10:40"
-            tools:textColor="#9E9E9E" />
-
-        <TextView
-            android:id="@+id/reply_content"
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="14dp"
-            android:textSize="14sp"
-            android:text="@{Post.content}"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/reply_userId"
-            app:layout_constraintTop_toBottomOf="@+id/reply_userId"
-            tools:text="菜品有荤有素，价格实惠，在中间窗口打素菜，一般1.5或者1块一份，而想吃肉，也是称斤算价钱的，满满都是肉，一般5块左右就够吃了~
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/reply_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/reply_content"
+                    app:set_text_time="@{Post.updateTime}"
+                    tools:text="发表于：20/8/2 10:40"
+                    tools:textColor="#9E9E9E" />
+
+                <TextView
+                    android:id="@+id/reply_content"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
+                    android:text="@{Post.content}"
+                    android:textColor="#425C5B"
+                    android:textSize="16.55sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/reply_userId"
+                    tools:text="菜品有荤有素，价格实惠，在中间窗口打素菜，一般1.5或者1块一份，而想吃肉，也是称斤算价钱的，满满都是肉，一般5块左右就够吃了~
 要求再高点的，可以到最左边的窗口，5块或者6块左右一盘菜，虽然有点贵，但是味道还不错。走到西一、西二食堂时，吃货君第一个反应就是，哇撒，好大~
 2个食堂相对而立，均为上下两层，让人怎么看都觉得不是食堂，而是体育馆或者图书馆之类的。" />
 
-        <TextView
-            android:id="@+id/reply_userId"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/shape_register_button"
-            android:text="@{Post.author}"
-            android:textColor="#F0F0F0"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="  0x000FFF3E  " />
+                <TextView
+                    android:id="@+id/reply_userId"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/shape_register_button"
+                    android:text="@{Post.author}"
+                    android:textColor="#F0F0F0"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text=" 0X0001 " />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
