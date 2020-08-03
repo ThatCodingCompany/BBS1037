@@ -34,6 +34,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:onClick="@{()->viewModel.onNewButtonClicked()}"
             app:layout_constraintBottom_toBottomOf="@+id/home_title_1"
             app:layout_constraintStart_toEndOf="@+id/home_title_1"
             app:layout_constraintTop_toTopOf="@+id/home_title_1"
