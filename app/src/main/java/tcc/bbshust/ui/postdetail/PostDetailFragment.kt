@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import tcc.bbshust.R
 import tcc.bbshust.databinding.PostDetailFragmentBinding
+import tcc.bbshust.ui.reply.ReplyFragment
 
 class PostDetailFragment : Fragment() {
 
@@ -54,8 +55,14 @@ class PostDetailFragment : Fragment() {
             adapter.submitList(it)
         })
 
+
+        val replyFragment = ReplyFragment.newInstance()
+
+        binding.floatingReplyButton.setOnClickListener {
+            childFragmentManager.beginTransaction().add(R.id.fragmentForReply,replyFragment).commit()
+            it.visibility=View.GONE
+        }
         return binding.root
     }
-
 
 }
