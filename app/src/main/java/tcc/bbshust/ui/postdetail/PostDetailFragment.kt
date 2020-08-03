@@ -39,6 +39,18 @@ class PostDetailFragment : Fragment() {
         binding.replyRecyclerView.adapter = adapter
 
         viewModel.replyList.observe(viewLifecycleOwner, Observer {
+            val idMap = mutableMapOf<String, Int>()
+            var i = 0
+            for (e in it) {
+                if (idMap.containsKey(e.author)) {
+                    e.author = String.format(" 0X%04X ", idMap[e.author])
+                    continue
+                }
+
+                idMap.put(e.author, i)
+                e.author = String.format(" 0X%04X ", i)
+                i += 1
+            }
             adapter.submitList(it)
         })
 
