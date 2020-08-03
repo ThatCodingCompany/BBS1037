@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import tcc.bbshust.R
 import tcc.bbshust.database.AccountDatabase
 import tcc.bbshust.databinding.HomeFragmentBinding
@@ -41,6 +42,8 @@ class HomeFragment : Fragment() {
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+
+        binding.postRecyclerview.addItemDecoration(DividerItemDecoration(context,DividerItemDecoration.VERTICAL))
 
         postAdapter = PostAdapter(PostListener { postId ->
             viewModel.onPostClicked(postId)
