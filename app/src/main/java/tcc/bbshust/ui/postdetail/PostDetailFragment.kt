@@ -1,5 +1,6 @@
 package tcc.bbshust.ui.postdetail
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,6 +12,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentResultListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import kotlinx.android.synthetic.main.post_detail_fragment.*
 import tcc.bbshust.R
 import tcc.bbshust.databinding.PostDetailFragmentBinding
 import tcc.bbshust.ui.reply.ReplyFragment
@@ -19,13 +21,14 @@ class PostDetailFragment : Fragment() {
 
     companion object {
         fun newInstance() = PostDetailFragment()
-        val TAG="PostDetailFragment:"
+        val TAG = "PostDetailFragment:"
     }
 
     private lateinit var viewModel: PostDetailViewModel
     private lateinit var binding: PostDetailFragmentBinding
     private lateinit var adapter: DetailAdapter
 
+    @SuppressLint("RestrictedApi")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -64,17 +67,29 @@ class PostDetailFragment : Fragment() {
         childFragmentManager.setFragmentResultListener(
             "requestKey",
             viewLifecycleOwner,
-            FragmentResultListener{ key, bundle ->
+            FragmentResultListener { key, bundle ->
                 val result = bundle.getString(key)
-                Toast.makeText(context, "$result", Toast.LENGTH_SHORT).show()
+                viewModel.addReply(result!!)
             }
         )
 
         binding.floatingReplyButton.setOnClickListener {
             childFragmentManager.beginTransaction().add(R.id.fragmentForReply, replyFragment)
                 .commit()
+            binding.fragmentForReply.visibility=View.VISIBLE
             it.visibility = View.GONE
         }
+
+        viewModel.isReplied.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                replyFragment.viewModel.content.value =""
+                replyFragment.viewModel.content.value = null
+                childFragmentManager.beginTransaction().remove(replyFragment).commit()
+                binding.fragmentForReply.visibility=View.GONE
+                binding.floatingReplyButton.visibility=View.VISIBLE
+                viewModel.getPostDetail()
+            }
+        })
         return binding.root
     }
 
