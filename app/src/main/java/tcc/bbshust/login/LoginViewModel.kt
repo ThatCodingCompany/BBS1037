@@ -44,7 +44,7 @@ class LoginViewModel(
         uiScope.launch {
 
             //TODO: MODIFY HERE to restrict the type of email
-            val email = "${username.value}"
+            val email = "${username.value}@hust.edu.cn"
 
             try {
                 val res = NetworkApi.retrofitService.getTokenAsync(

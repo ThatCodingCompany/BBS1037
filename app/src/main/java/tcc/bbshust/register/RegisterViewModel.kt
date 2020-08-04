@@ -48,7 +48,8 @@ class RegisterViewModel : ViewModel() {
         if (email.value != null && email.value != "") {
             uiScope.launch {
                 try {
-                    val registerRequest = RegisterRequest(email.value!!)
+                    val mEmail = "${email.value!!}@hust.edu.cn"
+                    val registerRequest = RegisterRequest(mEmail)
                     val res = NetworkApi.retrofitService.registerAsync(
                         registerRequest
                     )
@@ -77,23 +78,23 @@ class RegisterViewModel : ViewModel() {
             passWord.value != null && passWord.value != "" &&
             verifyPass.value != null && verifyPass.value != ""
         ) {
-            if(passWord.value==verifyPass.value){
-                val registerRes=registerRes.value
-                if (registerRes!=null){
-                    if(registerRes.isSuccess){
+            if (passWord.value == verifyPass.value) {
+                val registerRes = registerRes.value
+                if (registerRes != null) {
+                    if (registerRes.isSuccess) {
                         registerVerify()
-                    }else{
-                        toastInfo.value="嘤嘤嘤，发生了未知错误，试试重新获取验证码？"
-                        toastInfo.value="error:${registerRes.hint}"
+                    } else {
+                        toastInfo.value = "嘤嘤嘤，发生了未知错误，试试重新获取验证码？"
+                        toastInfo.value = "error:${registerRes.hint}"
                     }
-                }else{
-                    toastInfo.value="呜呜呜，您还没获取验证码T-T"
+                } else {
+                    toastInfo.value = "呜呜呜，您还没获取验证码T-T"
                 }
-            }else{
-                toastInfo.value="呜呜呜，两次密码输入不一致"
+            } else {
+                toastInfo.value = "呜呜呜，两次密码输入不一致"
             }
         } else {
-            toastInfo.value="呜呜呜，您还没输入完全"
+            toastInfo.value = "呜呜呜，您还没输入完全"
         }
     }
 
@@ -123,6 +124,6 @@ class RegisterViewModel : ViewModel() {
     }
 
     fun navigateToHomeDone() {
-        _navigateToLogin.value=null
+        _navigateToLogin.value = null
     }
 }

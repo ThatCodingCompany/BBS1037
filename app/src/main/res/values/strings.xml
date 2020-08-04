@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">1037号树洞</string>
     <string name="button_login">登录</string>
-    <string name="your_email">华中大邮箱</string>
+    <string name="your_email"> 华中大邮箱</string>
     <string name="passwd_pls">输入密码</string>
     <string name="register_title">邮箱账户注册</string>
-    <string name="hint_setpassword">请设置密码</string>
-    <string name="hint_verifypassword">请确认密码</string>
-    <string name="hint_input_verifycode">请输入验证码</string>
+    <string name="hint_setpassword"> 请设置密码</string>
+    <string name="hint_verifypassword"> 请确认密码</string>
+    <string name="hint_input_verifycode"> 请输入验证码</string>
     <string name="nav_home">Home</string>
     <string name="nav_mine">Mine</string>
     <string name="nav_message">Message</string>
