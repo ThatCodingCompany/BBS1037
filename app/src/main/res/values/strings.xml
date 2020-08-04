@@ -20,4 +20,6 @@
     <string name="confirm">确认</string>
     <string name="title">标题</string>
     <string name="content">内容</string>
+    <string name="reply_hint">回复</string>
+    <string name="reply_button_hint">发布</string>
 </resources>

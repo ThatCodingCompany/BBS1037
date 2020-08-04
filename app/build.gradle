@@ -45,7 +45,7 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$version_constraint_layout"
 
     // Android KTX
-    implementation "androidx.core:core-ktx:$version_core"
+    implementation "androidx.core:core-ktx:${version_core}"
 
     // Room and Lifecycle dependencies
     implementation "androidx.room:room-runtime:$version_room"

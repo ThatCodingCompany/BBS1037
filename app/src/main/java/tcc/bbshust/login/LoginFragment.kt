@@ -71,11 +71,13 @@ class LoginFragment : Fragment() {
             }
         })
 
-        viewModel.bottomNavState.observe(viewLifecycleOwner, Observer {
-            val father = activity as MainActivity
-            father.bottomViewStateChange(it)
-        })
         return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val father = activity as MainActivity
+        father.bottomViewStateChange(View.GONE)
     }
 
 }
