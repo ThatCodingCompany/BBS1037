@@ -31,14 +31,16 @@
             android:id="@+id/register_email"
             android:layout_width="220dp"
             android:layout_height="40dp"
-            android:layout_marginTop="65dp"
+            android:layout_marginTop="75dp"
             android:background="@drawable/shape_edit"
             android:hint="@string/your_email"
             android:inputType="textEmailAddress"
+            android:padding="4dp"
+            android:text="@={viewModel.email}"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView"
-            android:text="@={viewModel.email}"/>
+            app:layout_constraintTop_toTopOf="@+id/imageView" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/register_password"
@@ -48,7 +50,9 @@
             android:background="@drawable/shape_edit"
             android:hint="@string/hint_setpassword"
             android:inputType="textPassword"
+            android:padding="4dp"
             android:text="@={viewModel.passWord}"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageView" />
@@ -61,7 +65,9 @@
             android:background="@drawable/shape_edit"
             android:hint="@string/hint_verifypassword"
             android:inputType="textPassword"
+            android:padding="4dp"
             android:text="@={viewModel.verifyPass}"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/register_password" />
@@ -74,7 +80,9 @@
             android:background="@drawable/shape_edit"
             android:hint="@string/hint_input_verifycode"
             android:inputType="textVisiblePassword"
+            android:padding="4dp"
             android:text="@={viewModel.verifyCode}"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/register_email">
@@ -85,9 +93,11 @@
         <TextView
             android:id="@+id/textView_register_title"
             android:layout_width="wrap_content"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:text="@string/register_title"
+            android:textColor="#425C5B"
+            android:textSize="19.52sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageView" />
@@ -98,23 +108,26 @@
             android:layout_height="60dp"
             android:layout_marginTop="420dp"
             android:background="@drawable/shape_register_button"
+            android:onClick="@{()->viewModel.onClickRegisterVerify()}"
             android:text="@string/register_botton"
+            android:textColor="#C8FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageView"
-            android:onClick="@{()->viewModel.onClickRegisterVerify()}"/>
+            tools:textSize="18sp" />
 
         <Button
             android:id="@+id/get_code_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
+            android:onClick="@{()->viewModel.onClickGetRegisterRes()}"
             android:text="@string/getVerifyCode"
+            android:textColor="#B3B3B3"
             app:layout_constraintEnd_toEndOf="@+id/register_verifycode"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/register_verifycode"
-            android:onClick="@{()->viewModel.onClickGetRegisterRes()}"/>
+            app:layout_constraintTop_toBottomOf="@+id/register_verifycode" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
