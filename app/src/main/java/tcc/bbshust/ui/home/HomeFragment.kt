@@ -104,6 +104,7 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        viewModel.fillPostList()
         val father = activity as MainActivity
         father.bottomViewStateChange(View.VISIBLE)
     }

@@ -29,16 +29,17 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/register_email"
-            android:layout_width="220dp"
+            android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginTop="65dp"
+            android:layout_marginEnd="12dp"
             android:background="@drawable/shape_edit"
             android:hint="@string/your_email"
             android:inputType="textEmailAddress"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView"
-            android:text="@={viewModel.email}"/>
+            android:text="@={viewModel.email}"
+            app:layout_constraintEnd_toStartOf="@+id/textView7"
+            app:layout_constraintStart_toStartOf="@+id/register_verifycode"
+            app:layout_constraintTop_toTopOf="@+id/imageView" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/register_password"
@@ -98,11 +99,13 @@
             android:layout_height="60dp"
             android:layout_marginTop="420dp"
             android:background="@drawable/shape_register_button"
+            android:onClick="@{()->viewModel.onClickRegisterVerify()}"
             android:text="@string/register_botton"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView"
-            android:onClick="@{()->viewModel.onClickRegisterVerify()}"/>
+            app:layout_constraintTop_toTopOf="@+id/imageView" />
 
         <Button
             android:id="@+id/get_code_button"
@@ -115,6 +118,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/register_verifycode"
             android:onClick="@{()->viewModel.onClickGetRegisterRes()}"/>
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hust_edu_cn"
+            android:textColor="@android:color/primary_text_light"
+            android:textSize="16sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/register_email"
+            app:layout_constraintEnd_toEndOf="@+id/register_verifycode" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

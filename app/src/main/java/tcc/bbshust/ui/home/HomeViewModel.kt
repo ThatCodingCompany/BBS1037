@@ -52,10 +52,10 @@ class HomeViewModel(
         get() = _navigateToDetail
 
     init {
-        fillPostList()
+        //fillPostList()
     }
 
-    private fun fillPostList() {
+    fun fillPostList() {
         uiScope.launch {
             val mToken = token
             if (account == null) {
