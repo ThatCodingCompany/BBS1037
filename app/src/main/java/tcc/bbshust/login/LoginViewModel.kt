@@ -34,20 +34,11 @@ class LoginViewModel(
     val password = MutableLiveData<String>()
 
 
-    private val _bottomNavState = MutableLiveData<Int>()
-
-    val bottomNavState: LiveData<Int>
-        get() = _bottomNavState
-
     private val _navigateToHome = MutableLiveData<TokenResponse>()
 
     val navigateToHome: LiveData<TokenResponse>
         get() = _navigateToHome
 
-    init {
-        _bottomNavState.value = View.GONE
-        Log.d(TAG, "init:success ${bottomNavState.value}")
-    }
 
     fun loginForToken() {
         uiScope.launch {
@@ -97,7 +88,5 @@ class LoginViewModel(
 
     fun navigateToHomeDone() {
         _navigateToHome.value = null
-        _bottomNavState.value = View.VISIBLE
-        Log.d(TAG, "navigateToHomeDone: ${bottomNavState.value}")
     }
 }
