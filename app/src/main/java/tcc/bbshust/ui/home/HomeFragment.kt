@@ -37,7 +37,7 @@ class HomeFragment : Fragment() {
         val application = requireNotNull(this.activity).application
         val dataSource = AccountDatabase.getInstance(application).accountDatabaseDao
 
-        val factory: HomeViewModelFactory = HomeViewModelFactory(dataSource, application)
+        val factory = HomeViewModelFactory(dataSource, application)
 
         viewModel = ViewModelProvider(this, factory).get(HomeViewModel::class.java)
 
@@ -104,6 +104,7 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        viewModel.fillPostList()
         val father = activity as MainActivity
         father.bottomViewStateChange(View.VISIBLE)
     }
