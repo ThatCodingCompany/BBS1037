@@ -22,5 +22,5 @@
     <string name="content">内容</string>
     <string name="reply_hint">回复</string>
     <string name="reply_button_hint">发布</string>
-    <string name="re_login">重新登录</string>
+    <string name="re_login">  重新登录  </string>
 </resources>
