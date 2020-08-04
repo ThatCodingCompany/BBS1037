@@ -61,8 +61,8 @@
         <action
             android:id="@+id/action_userFragment_to_loginFragment"
             app:destination="@id/loginFragment"
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/userFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/editNewPostFragment"

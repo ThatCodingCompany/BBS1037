@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
+import tcc.bbshust.MainActivity
 import tcc.bbshust.R
 import tcc.bbshust.database.AccountDatabase
 import tcc.bbshust.databinding.HomeFragmentBinding
@@ -43,7 +44,12 @@ class HomeFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        binding.postRecyclerview.addItemDecoration(DividerItemDecoration(context,DividerItemDecoration.VERTICAL))
+        binding.postRecyclerview.addItemDecoration(
+            DividerItemDecoration(
+                context,
+                DividerItemDecoration.VERTICAL
+            )
+        )
 
         postAdapter = PostAdapter(PostListener { postId ->
             viewModel.onPostClicked(postId)
@@ -80,7 +86,7 @@ class HomeFragment : Fragment() {
         })
 
         viewModel.navigateToDetail.observe(viewLifecycleOwner, Observer { postId ->
-            if(postId!=null) {
+            if (postId != null) {
                 Log.d(TAG, "onCreateView: ${postId}")
                 this.findNavController().navigate(
                     HomeFragmentDirections.actionHomeFragmentToPostDetailFragment(
@@ -91,7 +97,15 @@ class HomeFragment : Fragment() {
                 viewModel.doneNavigateToDetail()
             }
         })
+
+
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val father = activity as MainActivity
+        father.bottomViewStateChange(View.VISIBLE)
     }
 
 }
