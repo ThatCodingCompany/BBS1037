@@ -18,15 +18,16 @@
         <ImageButton
             android:id="@+id/button_login"
             android:layout_width="0dp"
-            android:layout_height="81dp"
-            android:layout_marginStart="32dp"
-
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="64dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="50dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_marginEnd="50dp"
             android:background="@drawable/shape_login_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+            app:layout_constraintVertical_bias="0.2"
             tools:ignore="ContentDescription" />
 
         <TextView
@@ -43,12 +44,13 @@
             app:layout_constraintTop_toTopOf="@+id/button_login" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
+            android:layout_marginTop="194dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/shape_text_layout"
-            app:layout_constraintBottom_toTopOf="@+id/button_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -112,11 +114,41 @@
                 android:layout_marginBottom="32dp"
                 android:background="@android:color/transparent"
                 android:text="@string/loginRegisterButton"
+                android:textColor="#B3B3B3"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/layout_textinput_password" />
+                app:layout_constraintTop_toBottomOf="@+id/layout_textinput_password"
+                android:foreground="?android:attr/selectableItemBackground"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+        <TextView
+            android:id="@+id/home_title_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/allerta"
+            android:text="@string/no1037"
+            android:textColor="#FFD740"
+            android:textSize="32sp"
+            app:layout_constraintEnd_toStartOf="@+id/home_title_6"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/home_title_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name_half"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/home_title_5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/home_title_5"
+            app:layout_constraintTop_toTopOf="@+id/home_title_5" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

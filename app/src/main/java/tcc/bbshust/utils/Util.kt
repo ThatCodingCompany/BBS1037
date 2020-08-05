@@ -4,29 +4,38 @@ import android.annotation.SuppressLint
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import org.w3c.dom.Text
+import java.text.DateFormat
 import java.text.SimpleDateFormat
 
 fun makeToken(_token: String) = "Bearer $_token"
 
-@SuppressLint("SimpleDateFormat")
-fun Long.toTimeString(): String {
+fun Long.toDateTimeString(): String {
     val thisMillis = this * 1000L
-    return SimpleDateFormat("HH:mm")
+    return DateFormat.getDateTimeInstance()
         .format(thisMillis).toString()
 }
 
-@BindingAdapter("concise_content")
-fun TextView.setConciseContent(content: String) {
-    val result = if (content.length > 20) {
-        content.slice(IntRange(0, 19)) + "......"
+@SuppressLint("SimpleDateFormat")
+fun Long.toTimeString(): String {
+    val thisMillis = this * 1000L
+    return SimpleDateFormat("M月d日HH:mm")
+        .format(thisMillis).toString()
+}
+
+
+@BindingAdapter("concise_title")
+fun TextView.setConciseTitle(title: String) {
+    val result = if (title.length > 8) {
+        title.slice(IntRange(0, 7)) + "..."
     } else {
-        content
+        title
     }
     this.text = result
 }
 
 @BindingAdapter("set_text_time")
 fun TextView.setTime(time: Long) {
+//    this.text = time.toTimeString()
     this.text = time.toTimeString()
 }
 

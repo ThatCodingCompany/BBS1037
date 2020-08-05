@@ -95,8 +95,9 @@ class PostDetailFragment : Fragment() {
         return binding.root
     }
 
-    override fun onStart() {
-        super.onStart()
+
+    override fun onResume() {
+        super.onResume()
         val father = activity as MainActivity
         father.bottomViewStateChange(View.GONE)
     }

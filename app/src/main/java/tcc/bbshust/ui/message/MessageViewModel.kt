@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 
 class MessageViewModel : ViewModel() {
     private val _hint= MutableLiveData<String>().apply {
-        value = "This is Message Fragment"
+        value = "呜呜，此功能尚未开放"
     }
 
     val hint: LiveData<String>

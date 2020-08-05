@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import tcc.bbshust.MainActivity
 import tcc.bbshust.R
 import tcc.bbshust.databinding.EditNewPostFragmentBinding
 
@@ -58,5 +59,11 @@ class EditNewPostFragment : Fragment() {
         })
 
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val father=activity as MainActivity
+        father.bottomViewStateChange(View.GONE)
     }
 }

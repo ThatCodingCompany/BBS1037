@@ -37,7 +37,7 @@ class RegisterFragment : Fragment() {
 
         viewModel.toastInfo.observe(viewLifecycleOwner, Observer {
             it.let {
-                Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
             }
         })
 
