@@ -45,10 +45,16 @@
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_homeFragment_to_editNewPostFragment"
-            app:destination="@id/editNewPostFragment" />
+            app:destination="@id/editNewPostFragment"
+            app:enterAnim="@anim/right_to_mid"
+            app:exitAnim="@anim/anim_identical"
+            app:popExitAnim="@anim/mid_to_right" />
         <action
             android:id="@+id/action_homeFragment_to_postDetailFragment"
             app:destination="@id/postDetailFragment"
+            app:enterAnim="@anim/down_to_mid"
+            app:exitAnim="@anim/anim_identical"
+            app:popExitAnim="@anim/mid_to_down"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="false" />
 
@@ -75,6 +81,7 @@
         <action
             android:id="@+id/action_editNewPostFragment_to_homeFragment"
             app:destination="@id/homeFragment"
+            app:exitAnim="@anim/mid_to_right"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
 
