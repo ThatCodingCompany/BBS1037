@@ -9,11 +9,6 @@ import java.text.SimpleDateFormat
 
 fun makeToken(_token: String) = "Bearer $_token"
 
-fun Long.toDateTimeString(): String {
-    val thisMillis = this * 1000L
-    return DateFormat.getDateTimeInstance()
-        .format(thisMillis).toString()
-}
 
 @SuppressLint("SimpleDateFormat")
 fun Long.toTimeString(): String {
@@ -25,8 +20,8 @@ fun Long.toTimeString(): String {
 
 @BindingAdapter("concise_title")
 fun TextView.setConciseTitle(title: String) {
-    val result = if (title.length > 8) {
-        title.slice(IntRange(0, 7)) + "..."
+    val result = if (title.length > 10) {
+        title.slice(IntRange(0, 9)) + "..."
     } else {
         title
     }
@@ -35,7 +30,6 @@ fun TextView.setConciseTitle(title: String) {
 
 @BindingAdapter("set_text_time")
 fun TextView.setTime(time: Long) {
-//    this.text = time.toTimeString()
     this.text = time.toTimeString()
 }
 
