@@ -37,7 +37,9 @@
             app:enterAnim="@anim/anim_appear"
             app:exitAnim="@anim/anim_identical"
             app:popEnterAnim="@anim/anim_appear"
-            app:popExitAnim="@anim/anim_identical" />
+            app:popExitAnim="@anim/anim_identical"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/messageFragment"
