@@ -113,7 +113,6 @@ class HomeViewModel(
     }
 
     private suspend fun reLogin() {
-
         try {
             val res =
                 NetworkApi.retrofitService.getTokenAsync(account!!.email, account!!.password)

@@ -113,12 +113,12 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="32dp"
                 android:background="@android:color/transparent"
+                android:foreground="?android:attr/selectableItemBackground"
                 android:text="@string/loginRegisterButton"
-                android:textColor="#B3B3B3"
+                android:textColor="#616161"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/layout_textinput_password"
-                android:foreground="?android:attr/selectableItemBackground"/>
+                app:layout_constraintTop_toBottomOf="@+id/layout_textinput_password" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
