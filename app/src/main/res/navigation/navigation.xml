@@ -11,10 +11,18 @@
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
-            app:destination="@id/registerFragment" />
+            app:destination="@id/registerFragment"
+            app:enterAnim="@anim/anim_appear"
+            app:exitAnim="@anim/anim_identical"
+            app:popEnterAnim="@anim/anim_appear"
+            app:popExitAnim="@anim/anim_identical" />
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment"
+            app:enterAnim="@anim/anim_appear"
+            app:exitAnim="@anim/anim_identical"
+            app:popEnterAnim="@anim/anim_appear"
+            app:popExitAnim="@anim/anim_identical"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -25,7 +33,11 @@
         tools:layout="@layout/fragment_register">
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/anim_appear"
+            app:exitAnim="@anim/anim_identical"
+            app:popEnterAnim="@anim/anim_appear"
+            app:popExitAnim="@anim/anim_identical" />
     </fragment>
     <fragment
         android:id="@+id/messageFragment"
@@ -45,10 +57,16 @@
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_homeFragment_to_editNewPostFragment"
-            app:destination="@id/editNewPostFragment" />
+            app:destination="@id/editNewPostFragment"
+            app:enterAnim="@anim/right_to_mid"
+            app:exitAnim="@anim/anim_identical"
+            app:popExitAnim="@anim/mid_to_right" />
         <action
             android:id="@+id/action_homeFragment_to_postDetailFragment"
             app:destination="@id/postDetailFragment"
+            app:enterAnim="@anim/down_to_mid"
+            app:exitAnim="@anim/anim_identical"
+            app:popExitAnim="@anim/mid_to_down"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="false" />
 
@@ -61,6 +79,10 @@
         <action
             android:id="@+id/action_userFragment_to_loginFragment"
             app:destination="@id/loginFragment"
+            app:enterAnim="@anim/anim_appear"
+            app:exitAnim="@anim/anim_identical"
+            app:popEnterAnim="@anim/anim_appear"
+            app:popExitAnim="@anim/anim_identical"
             app:popUpTo="@id/userFragment"
             app:popUpToInclusive="false" />
     </fragment>
@@ -75,6 +97,7 @@
         <action
             android:id="@+id/action_editNewPostFragment_to_homeFragment"
             app:destination="@id/homeFragment"
+            app:exitAnim="@anim/mid_to_right"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
 
