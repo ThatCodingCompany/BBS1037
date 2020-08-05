@@ -79,8 +79,8 @@ class PostDetailViewModel(
     }
 
     fun addReply(content: String) {
-        try {
-            uiScope.launch {
+        uiScope.launch {
+            try {
                 val request = ReplyRequest(content)
                 val res =
                     NetworkApi.retrofitService.replyAsync(makeToken(token.token), postId, request)
@@ -98,11 +98,11 @@ class PostDetailViewModel(
                         _makeToast.value = e.message
                     }
                 }
-            }
-        } catch (e: Exception) {
-            _makeToast.value = e.message
-        }
 
+            } catch (e: Exception) {
+                _makeToast.value = e.message
+            }
+        }
     }
 
 
