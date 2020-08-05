@@ -31,6 +31,10 @@ class PostDetailViewModel(
     val isReplied: LiveData<Boolean>
         get() = _isReplied
 
+    private val _makeToast = MutableLiveData<String>()
+    val makeToast: LiveData<String>
+        get() = _makeToast
+
     init {
         getPostDetail()
     }
@@ -38,28 +42,34 @@ class PostDetailViewModel(
     fun getPostDetail() {
 
         uiScope.launch {
-            val res = NetworkApi.retrofitService.getPostByIdAsync(makeToken(token.token), postId)
-            if (res.isSuccessful) {
-                val header = Post(
-                    res.body()!!.data!!.postId,
-                    res.body()!!.data!!.createTime,
-                    res.body()!!.data!!.updateTime,
-                    res.body()!!.data!!.title,
-                    res.body()!!.data!!.author,
-                    res.body()!!.data!!.content,
-                    null
-                )
-                replyList.value = listOf(header) + res.body()!!.data!!.replyList!!
-            } else {
-                val jsonConverter =
-                    moshi.adapter<GetPostByIdResponse>(GetPostByIdResponse::class.java)
-                val errorBody = jsonConverter.fromJson(res.errorBody()!!.string())
-                try {
-                    Log.d(TAG, "getPostDetail: ${errorBody!!.hint}")
-                } catch (e: Exception) {
-                    Log.d(TAG, "getPostDetail: ${e.message}")
+            try {
+                val res =
+                    NetworkApi.retrofitService.getPostByIdAsync(makeToken(token.token), postId)
+                if (res.isSuccessful) {
+                    val header = Post(
+                        res.body()!!.data!!.postId,
+                        res.body()!!.data!!.createTime,
+                        res.body()!!.data!!.updateTime,
+                        res.body()!!.data!!.title,
+                        res.body()!!.data!!.author,
+                        res.body()!!.data!!.content,
+                        null
+                    )
+                    replyList.value = listOf(header) + res.body()!!.data!!.replyList!!
+                } else {
+                    try {
+                        val jsonConverter =
+                            moshi.adapter<GetPostByIdResponse>(GetPostByIdResponse::class.java)
+                        val errorBody = jsonConverter.fromJson(res.errorBody()!!.string())
+                        _makeToast.value = errorBody!!.hint
+                    } catch (e: Exception) {
+                        _makeToast.value = e.message
+                    }
                 }
+            } catch (e: Exception) {
+                _makeToast.value = e.message
             }
+
         }
     }
 
@@ -69,23 +79,30 @@ class PostDetailViewModel(
     }
 
     fun addReply(content: String) {
-        uiScope.launch {
-            val request = ReplyRequest(content)
-            val res = NetworkApi.retrofitService.replyAsync(makeToken(token.token), postId, request)
-            if (res.isSuccessful) {
-                _isReplied.value = true
-            }
-            else{
-                val jsonConverter =
-                    moshi.adapter<ReplyResponse>(ReplyResponse::class.java)
-                val errorBody = jsonConverter.fromJson(res.errorBody()!!.string())
-                try {
-                    Log.d(TAG, "addReply: ${errorBody!!.hint}")
-                } catch (e: Exception) {
-                    Log.d(TAG, "addReply: ${e.message}")
+        try {
+            uiScope.launch {
+                val request = ReplyRequest(content)
+                val res =
+                    NetworkApi.retrofitService.replyAsync(makeToken(token.token), postId, request)
+                if (res.isSuccessful) {
+                    _isReplied.value = true
+                } else {
+                    try {
+                        val jsonConverter =
+                            moshi.adapter<ReplyResponse>(ReplyResponse::class.java)
+                        val errorBody = jsonConverter.fromJson(res.errorBody()!!.string())
+                        _makeToast.value = errorBody!!.hint
+                        Log.d(TAG, "addReply: ${errorBody.hint}")
+                    } catch (e: Exception) {
+                        Log.d(TAG, "addReply: ${e.message}")
+                        _makeToast.value = e.message
+                    }
                 }
             }
+        } catch (e: Exception) {
+            _makeToast.value = e.message
         }
+
     }
 
 
