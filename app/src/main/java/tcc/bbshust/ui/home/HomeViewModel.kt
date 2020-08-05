@@ -51,9 +51,6 @@ class HomeViewModel(
     val navigateToDetail: LiveData<String>
         get() = _navigateToDetail
 
-    init {
-        //fillPostList()
-    }
 
     fun fillPostList() {
         uiScope.launch {
@@ -71,19 +68,24 @@ class HomeViewModel(
                 reLogin()
             }
 
-            val res = NetworkApi.retrofitService.getAllPostsAsync(makeToken(token!!.token))
-            if (res.isSuccessful) {
-                postList.value = res.body()!!.data!!.postsInfo
-            } else {
-                val jsonConverter =
-                    moshi.adapter<GetAllPostsResponse>(GetAllPostsResponse::class.java)
-                val errorBody = jsonConverter.fromJson(res.errorBody()!!.string())
-                try {
-                    _makeToast.value = errorBody!!.hint
-                } catch (e: Exception) {
-                    _makeToast.value = e.message
+            try {
+                val res = NetworkApi.retrofitService.getAllPostsAsync(makeToken(token!!.token))
+                if (res.isSuccessful) {
+                    postList.value = res.body()!!.data!!.postsInfo
+                } else {
+                    val jsonConverter =
+                        moshi.adapter<GetAllPostsResponse>(GetAllPostsResponse::class.java)
+                    val errorBody = jsonConverter.fromJson(res.errorBody()!!.string())
+                    try {
+                        _makeToast.value = errorBody!!.hint
+                    } catch (e: Exception) {
+                        _makeToast.value = e.message
+                    }
                 }
+            } catch (e: Exception) {
+                _makeToast.value = e.message
             }
+
         }
     }
 
@@ -111,7 +113,6 @@ class HomeViewModel(
     }
 
     private suspend fun reLogin() {
-
         try {
             val res =
                 NetworkApi.retrofitService.getTokenAsync(account!!.email, account!!.password)

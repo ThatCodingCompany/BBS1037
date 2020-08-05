@@ -43,11 +43,9 @@ class RegisterFragment : Fragment() {
 
         viewModel.registerRes.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {
-//                Toast.makeText(context, "验证码发送成功！", Toast.LENGTH_LONG).show()
                 viewModel.toastInfo.value="验证码发送成功！"
                 Log.d(TAG, "onCreateView: isSuccess")
             } else {
-//                Toast.makeText(context, "error:${it.hint}", Toast.LENGTH_LONG).show()
                 viewModel.toastInfo.value="error:${it.hint}"
                 Log.d(TAG, "onCreateView: notSuccess")
             }
@@ -62,7 +60,6 @@ class RegisterFragment : Fragment() {
                     viewModel.toastInfo.value="嘻嘻嘻，注册好啦~"
                 }
                 else{
-//                    Toast.makeText(context, "error:${it.hint}", Toast.LENGTH_LONG).show()
                     viewModel.toastInfo.value="error:${it.hint}"
                 }
             }
