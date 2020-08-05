@@ -44,12 +44,13 @@
                     android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="6dp"
+                    android:layout_marginBottom="16dp"
                     android:textSize="13sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/textView5"
                     app:layout_constraintTop_toBottomOf="@+id/textView5"
                     app:set_update_time="@{post.updateTime}"
+                    tools:text="更新于：911"
                     tools:textColor="#9E9E9E" />
 
                 <TextView
@@ -61,7 +62,8 @@
                     app:layout_constraintStart_toStartOf="@+id/textView3"
                     app:layout_constraintTop_toBottomOf="@+id/textView3"
                     app:set_create_time="@{post.createTime}"
-                    tools:textColor="#9E9E9E" />
+                    tools:textColor="#9E9E9E"
+                    tools:text="创建于：911"/>
 
                 <TextView
                     android:id="@+id/textView4"
@@ -95,13 +97,15 @@
 
                 <TextView
                     android:id="@+id/post_title"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="32dp"
                     android:text="@{post.title}"
                     android:textColor="#9B724B"
                     android:textSize="23sp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="今日饭堂" />

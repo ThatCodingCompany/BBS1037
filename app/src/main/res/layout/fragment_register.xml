@@ -22,23 +22,28 @@
             android:layout_marginTop="194dp"
             android:src="@drawable/shape_register_layout"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            tools:layout_editor_absoluteX="0dp"
             tools:ignore="ContentDescription" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/register_email"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_marginTop="65dp"
+
+            android:layout_marginTop="75dp"
             android:layout_marginEnd="12dp"
             android:background="@drawable/shape_edit"
             android:hint="@string/your_email"
             android:inputType="textEmailAddress"
+            android:padding="4dp"
             android:text="@={viewModel.email}"
+            android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@+id/textView7"
             app:layout_constraintStart_toStartOf="@+id/register_verifycode"
+
             app:layout_constraintTop_toTopOf="@+id/imageView" />
 
         <com.google.android.material.textfield.TextInputEditText
@@ -49,7 +54,9 @@
             android:background="@drawable/shape_edit"
             android:hint="@string/hint_setpassword"
             android:inputType="textPassword"
+            android:padding="4dp"
             android:text="@={viewModel.passWord}"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageView" />
@@ -62,7 +69,9 @@
             android:background="@drawable/shape_edit"
             android:hint="@string/hint_verifypassword"
             android:inputType="textPassword"
+            android:padding="4dp"
             android:text="@={viewModel.verifyPass}"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/register_password" />
@@ -75,7 +84,9 @@
             android:background="@drawable/shape_edit"
             android:hint="@string/hint_input_verifycode"
             android:inputType="textVisiblePassword"
+            android:padding="4dp"
             android:text="@={viewModel.verifyCode}"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/register_email">
@@ -86,9 +97,11 @@
         <TextView
             android:id="@+id/textView_register_title"
             android:layout_width="wrap_content"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:text="@string/register_title"
+            android:textColor="#425C5B"
+            android:textSize="19.52sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageView" />
@@ -101,23 +114,28 @@
             android:background="@drawable/shape_register_button"
             android:onClick="@{()->viewModel.onClickRegisterVerify()}"
             android:text="@string/register_botton"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
+            android:textColor="#C8FFFFFF"
+            android:foreground="?android:attr/selectableItemBackground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView" />
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            android:textSize="18sp"
+            tools:textSize="18sp" />
+
 
         <Button
             android:id="@+id/get_code_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
+            android:onClick="@{()->viewModel.onClickGetRegisterRes()}"
             android:text="@string/getVerifyCode"
+            android:textColor="#B3B3B3"
+            android:foreground="?android:attr/selectableItemBackground"
             app:layout_constraintEnd_toEndOf="@+id/register_verifycode"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/register_verifycode"
-            android:onClick="@{()->viewModel.onClickGetRegisterRes()}"/>
+            app:layout_constraintTop_toBottomOf="@+id/register_verifycode" />
 
         <TextView
             android:id="@+id/textView7"
@@ -128,6 +146,35 @@
             android:textSize="16sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/register_email"
             app:layout_constraintEnd_toEndOf="@+id/register_verifycode" />
+
+        <TextView
+            android:id="@+id/home_title_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/allerta"
+            android:text="@string/no1037"
+            android:textColor="#FFD740"
+            android:textSize="32sp"
+            app:layout_constraintEnd_toStartOf="@+id/home_title_4"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/home_title_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name_half"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/home_title_3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/home_title_3"
+            app:layout_constraintTop_toTopOf="@+id/home_title_3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

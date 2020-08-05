@@ -28,7 +28,7 @@
             android:layout_marginTop="24dp"
             android:textColor="#9B724B"
             android:textSize="20sp"
-            app:concise_content="@{post.title}"
+            app:concise_title="@{post.title}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="今日饭堂" />
@@ -43,7 +43,7 @@
             android:maxLines="1"
             android:textColor="#425C5B"
             android:textSize="16.55sp"
-            app:concise_content="@{post.content}"
+            android:text="@{post.content}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/text_view_list_title"
@@ -59,6 +59,7 @@
             app:layout_constraintBaseline_toBaselineOf="@+id/text_view_list_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:set_text_time="@{post.updateTime}"
+            android:textSize="12sp"
             tools:text="08:59" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

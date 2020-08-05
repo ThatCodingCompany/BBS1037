@@ -3,6 +3,7 @@ package tcc.bbshust
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer

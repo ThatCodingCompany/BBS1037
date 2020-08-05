@@ -43,7 +43,6 @@ class LoginViewModel(
     fun loginForToken() {
         uiScope.launch {
 
-            //TODO: MODIFY HERE to restrict the type of email
             val email = "${username.value}@hust.edu.cn"
 
             try {

@@ -47,7 +47,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/reply_content"
                     app:set_text_time="@{Post.updateTime}"
                     tools:text="发表于：20/8/2 10:40"
-                    tools:textColor="#9E9E9E" />
+                    tools:textColor="#BDBDBD" />
 
                 <TextView
                     android:id="@+id/reply_content"

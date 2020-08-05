@@ -1,6 +1,5 @@
 package tcc.bbshust.ui.user
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,7 +12,6 @@ import tcc.bbshust.MainActivity
 import tcc.bbshust.R
 import tcc.bbshust.database.AccountDatabase
 import tcc.bbshust.databinding.UserFragmentBinding
-import tcc.bbshust.ui.message.MessageViewModel
 
 class UserFragment : Fragment() {
 

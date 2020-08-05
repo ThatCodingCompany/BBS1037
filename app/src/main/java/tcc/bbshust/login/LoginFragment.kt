@@ -47,7 +47,7 @@ class LoginFragment : Fragment() {
             ) {
                 viewModel.loginForToken()
             } else {
-                Toast.makeText(context, "用户名和密码不能为空！", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "用户名和密码不能为空！", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -64,7 +64,7 @@ class LoginFragment : Fragment() {
                             LoginFragmentDirections.actionLoginFragmentToHomeFragment()
                         )
                     viewModel.navigateToHomeDone()
-                    Toast.makeText(context, "successfully login!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "啦啦啦，登录成功！", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(context, "error:${it.hint}", Toast.LENGTH_LONG).show()
                 }
@@ -74,10 +74,10 @@ class LoginFragment : Fragment() {
         return binding.root
     }
 
-    override fun onStart() {
-        super.onStart()
+
+    override fun onResume() {
+        super.onResume()
         val father = activity as MainActivity
         father.bottomViewStateChange(View.GONE)
     }
-
 }
