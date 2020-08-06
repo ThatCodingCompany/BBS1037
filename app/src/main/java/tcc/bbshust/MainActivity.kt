@@ -22,14 +22,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        val navView = binding.navView
-        val navController = findNavController(R.id.navHostFragment)
-
-        navView.setupWithNavController(navController)
-
     }
 
-    fun bottomViewStateChange(state:Int){
-        binding.navView.visibility=state
-    }
 }

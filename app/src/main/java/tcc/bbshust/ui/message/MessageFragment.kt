@@ -9,6 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import tcc.bbshust.R
 import tcc.bbshust.databinding.HomeFragmentBinding
 import tcc.bbshust.databinding.MessageFragmentBinding
@@ -33,6 +36,11 @@ class MessageFragment : Fragment() {
         binding.viewModel=viewModel
 
         Log.d(TAG, "onCreateView: set")
+
+        val navView = binding.navView
+        val navController = findNavController()
+        navView.setupWithNavController(navController)
+
         return binding.root
     }
 

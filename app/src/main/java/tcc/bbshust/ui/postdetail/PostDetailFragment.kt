@@ -96,9 +96,4 @@ class PostDetailFragment : Fragment() {
     }
 
 
-    override fun onResume() {
-        super.onResume()
-        val father = activity as MainActivity
-        father.bottomViewStateChange(View.GONE)
-    }
 }

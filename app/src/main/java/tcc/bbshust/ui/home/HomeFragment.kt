@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import tcc.bbshust.MainActivity
 import tcc.bbshust.R
@@ -98,6 +99,9 @@ class HomeFragment : Fragment() {
             }
         })
 
+        val navView = binding.navView
+        val navController = findNavController()
+        navView.setupWithNavController(navController)
 
         return binding.root
     }
@@ -105,8 +109,6 @@ class HomeFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         viewModel.fillPostList()
-        val father = activity as MainActivity
-        father.bottomViewStateChange(View.VISIBLE)
     }
 
 }
