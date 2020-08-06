@@ -1,6 +1,9 @@
 package tcc.bbshust.utils
 
 import android.annotation.SuppressLint
+import android.os.CountDownTimer
+import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import org.w3c.dom.Text
@@ -43,4 +46,21 @@ fun TextView.setCreateTime(time: Long) {
 fun TextView.setUpdateTime(time: Long) {
     val text = "最新回复：" + time.toTimeString()
     this.text = text
+}
+
+class TimeCount(millisInFuture: Long, countDownInterval: Long, val button: Button) : CountDownTimer(
+    millisInFuture,
+    countDownInterval
+) {
+    override fun onFinish() {
+        button.text = "重新发送"
+        button.isClickable = true
+    }
+
+    override fun onTick(millisUntilFinished: Long) {
+        button.isClickable = false
+        val hint = (millisUntilFinished / 1000).toString() + "s"
+        button.text = hint
+    }
+
 }

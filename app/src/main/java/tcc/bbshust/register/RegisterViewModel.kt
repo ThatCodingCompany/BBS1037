@@ -44,8 +44,7 @@ class RegisterViewModel : ViewModel() {
 
     var toastInfo = MutableLiveData<String>()
 
-    fun onClickGetRegisterRes() {
-        if (email.value != null && email.value != "") {
+    fun getRegisterRes() {
             uiScope.launch {
                 try {
                     val mEmail = "${email.value!!}@hust.edu.cn"
@@ -66,10 +65,6 @@ class RegisterViewModel : ViewModel() {
                     Log.d(TAG, "getUserId: ${e.message}")
                 }
             }
-        } else {
-            toastInfo.value = "邮箱不能为空！"
-        }
-
     }
 
 
