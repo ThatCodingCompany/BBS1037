@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import tcc.bbshust.MainActivity
 import tcc.bbshust.R
 import tcc.bbshust.database.AccountDatabase
@@ -38,12 +39,12 @@ class UserFragment : Fragment() {
                 .navigate(UserFragmentDirections.actionUserFragmentToLoginFragment())
 
         }
+
+        val navView = binding.navView
+        val navController = findNavController()
+        navView.setupWithNavController(navController)
+
         return binding.root
     }
 
-    override fun onResume() {
-        super.onResume()
-        val father = activity as MainActivity
-        father.bottomViewStateChange(View.VISIBLE)
-    }
 }
